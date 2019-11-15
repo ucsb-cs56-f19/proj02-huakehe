@@ -10,7 +10,7 @@
 
       <h1>Earthquake Search</h1>
 
-     <form action="#" th:action="@{/earthquakes/results}" th:object="${eqSearch}" method="get">
+      <form action="#" th:action="@{/earthquakes/results}" th:object="${eqSearch}" method="get">
                 <table>
                     <tr class="form-group">
                         <th><label for="distance" class="col-form-label">Distance (km)</label></th>
@@ -23,7 +23,7 @@
                 </table>
 
                 <input type="submit" class="btn btn-primary" value="Search">
-            </form>
+        </form>
 
       <div th:replace="bootstrap/bootstrap_footer.html"></div>
     </div>
