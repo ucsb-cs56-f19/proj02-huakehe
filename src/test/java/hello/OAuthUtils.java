@@ -33,7 +33,6 @@ public class OAuthUtils {
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("sub", "1234567890");
         attributes.put("name", name);
-        
         attributes.put("email", email);
 
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
