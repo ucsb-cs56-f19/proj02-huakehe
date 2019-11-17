@@ -1,11 +1,10 @@
 package hello;
 
-
 import java.util.Arrays;
 
 
-import org.slf4j.Logger;	import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;	import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -20,20 +19,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
+public class EarthquakeQueryService {
 
-public class EarthquakeQueryService {	public class EarthquakeQueryService {
+    private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);
 
+    public String getJSON(int distance, int minmag) {
+        RestTemplate restTemplate = new RestTemplate();
 
-    private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);	    private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);
-
-
-    public String getJSON(int distance, int minmag) {	    public String getJSON(int distance, int minmag) {
-        String fakeJson = "{ \"key\": \"value\" }";	        RestTemplate restTemplate = new RestTemplate();
-        String json = fakeJson;	
-        logger.info("json=" + json);	        HttpHeaders headers = new HttpHeaders();
-        return json;	        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
-
+      
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
         String uri = "https://earthquake.usgs.gov/fdsnws/event/1/query";
@@ -56,7 +52,6 @@ public class EarthquakeQueryService {	public class EarthquakeQueryService {
         }
         logger.info("from EarthquakeQueryService.getJSON: " + retVal);
         return retVal;
-    }	    }
+    }
 
-
-} 	} 
+}
