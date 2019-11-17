@@ -32,6 +32,7 @@ public class FeatureCollection {
             return null;
         } catch (Exception e) {
             logger.error("Exception:" + e);
+            
             return null;
         }
     }
