@@ -1,4 +1,5 @@
 package hello;
+
 public class EqSearch{
 
 	private int distance;
