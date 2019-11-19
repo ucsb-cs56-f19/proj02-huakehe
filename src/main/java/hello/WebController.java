@@ -1,4 +1,5 @@
 package hello;
+import hello.geojson.FeatureCollection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -59,11 +60,13 @@ public class WebController {
     @GetMapping("/earthquakes/results")
     public String getEarthquakesResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             EqSearch eqSearch) {
-         EarthquakeQueryService e = new EarthquakeQueryService();
+        EarthquakeQueryService e = new EarthquakeQueryService();
         model.addAttribute("eqSearch", eqSearch);
         // TODO: Actually do the search here and add results to the model
         String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());
         model.addAttribute("json", json);
+        FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
+        model.addAttribute("featureCollection",featureCollection);
         return "earthquakes/results";
     }
 }
