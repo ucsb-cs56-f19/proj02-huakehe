@@ -1,8 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en"> 
   <head>
-<title>Earthquake Search Results</title>
-<!-- <title><a th:href="${featureCollection.features.url}" th:text="Earthquake Search Results" > </a></title> -->
+    <title>Earthquake Search Results</title>
     <div th:replace="bootstrap/bootstrap_head.html"></div>
   </head>
   <body>
@@ -11,29 +10,25 @@
 
       <h1>Earthquake Search Results</h1>
 
-
-        
-        
         <h2> Results</h2>
 
         <table class="table">
-            <tr>
-                <th>Distance (km)</th>
-                <td th:text="${eqSearch.distance}"></td>
-            </tr>
-            <tr>
-                <th>Minimum Magnitude</th>
-                <td th:text="${eqSearch.minmag}"></td>
-            </tr>
             <thead>
                 <tr>
-                    <th>Type</th>
+                    <th>Title</th>
+                    <th>Count</th>
+                    <th>Distance (km)</th>
+                    <th>Minimum Magnitude</th>
+
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td th:text="${featureCollection.metadata.url}"></td>
+                    <td><a th:href="${featureCollection.metadata.url}" th:text="${featureCollection.metadata.title}"></a></td>
                     <td th:text="${featureCollection.metadata.count}"></td>
+                    <td th:text="${eqSearch.distance}"></td>
+                    <td th:text="${eqSearch.minmag}"></td>
                 </tr>
             </tbody>
         </table>
@@ -45,7 +40,6 @@
                     <th>id</th>
                     <th>place</th>
                     <th>mag</th>
-                    <th>title</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +47,6 @@
                     <td><a th:href="${f.properties.url}" th:text="${f.id}"></a></td>
                     <td th:text="${f.properties.place}"></td>
                     <td th:text="${f.properties.mag}"></td>
-                    <td th:text="${f.properties.title}"></td>
                 </tr>
             </tbody>
         </table>
