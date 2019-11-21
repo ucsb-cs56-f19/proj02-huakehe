@@ -4,6 +4,8 @@ https://ucsb-cs56-f19.github.io/lab07-huakehe/
 Heroku app:
 https://cs56-f19-lab07-huakehe.herokuapp.com/
 
+Link to this repo:
+https://github.com/ucsb-cs56-f19/lab07-huakehe
 
 A simple Spring Boot webapp using:
 * Thymeleaf templating
