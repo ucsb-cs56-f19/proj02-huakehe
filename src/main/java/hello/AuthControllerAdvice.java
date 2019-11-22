@@ -14,7 +14,9 @@ import hello.repositories.UserRepository;
 @ControllerAdvice
 public class AuthControllerAdvice {
 
-    // private UserRepository userRepository; // need to declare userRepository here?
+    @Autowired   
+    private UserRepository userRepository;
+    
     @Autowired   
     private MembershipService membershipService;
 
