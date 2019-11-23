@@ -7,6 +7,10 @@ https://cs56-f19-lab07-huakehe.herokuapp.com/
 Link to this repo:
 https://github.com/ucsb-cs56-f19/lab07-huakehe
 
+Travis CI page:
+https://travis-ci.org/ucsb-cs56-f19/lab07-huakehe
+
+
 A simple Spring Boot webapp using:
 * Thymeleaf templating
 * Pulling in Bootstrap from CDN.
