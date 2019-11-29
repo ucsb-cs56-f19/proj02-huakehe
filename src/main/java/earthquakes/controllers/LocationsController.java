@@ -30,6 +30,19 @@ public class LocationsController {
         return "locations/search";
     }
 
+    // @GetMapping("/locations/results")
+    // public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
+    //         LocSearch locSearch) {
+    //     EarthquakeQueryService e = new EarthquakeQueryService();
+    //     model.addAttribute("locSearch", locSearch);
+    //     // TODO: Actually do the search here and add results to the model
+    //     String json = e.getJSON(locSearch.getLocation());
+    //     model.addAttribute("json", json);
+    //     // FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
+    //     // model.addAttribute("featureCollection",featureCollection);
+    //     return "earthquakes/results";
+    // }
+
 
 }
 
