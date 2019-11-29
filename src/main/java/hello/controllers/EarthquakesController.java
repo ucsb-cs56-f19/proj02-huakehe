@@ -29,7 +29,7 @@ public class EarthquakesController {
             EqSearch eqSearch) {
         return "earthquakes/search";
     }
-    // ds
+    // d
 
     @GetMapping("/earthquakes/results")
     public String getEarthquakesResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
