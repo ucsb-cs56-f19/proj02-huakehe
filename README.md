@@ -1,14 +1,14 @@
-Link to the documentation:
+Link to the documentation: ?????
 https://ucsb-cs56-f19.github.io/lab07-huakehe/
 
 Heroku app:
-https://cs56-f19-lab07-huakehe.herokuapp.com/
+https://github.com/ucsb-cs56-f19/proj01-huakehe
 
 Link to this repo:
-https://github.com/ucsb-cs56-f19/lab07-huakehe
+https://github.com/ucsb-cs56-f19/proj01-huakehe
 
 Travis CI page:
-https://travis-ci.org/ucsb-cs56-f19/lab07-huakehe
+https://travis-ci.org/ucsb-cs56-f19/proj01-huakehe
 
 
 A simple Spring Boot webapp using:
