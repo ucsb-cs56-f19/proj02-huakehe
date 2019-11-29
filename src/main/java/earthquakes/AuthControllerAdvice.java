@@ -1,4 +1,4 @@
-package hello;
+package earthquakes;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 
 // these three imports is what I added 
 import java.util.List;
-import hello.entities.AppUser;
-import hello.repositories.UserRepository;
+import earthquakes.entities.AppUser;
+import earthquakes.repositories.UserRepository;
+import earthquakes.services.MembershipService;
 
 @ControllerAdvice
 public class AuthControllerAdvice {
