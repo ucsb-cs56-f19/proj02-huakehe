@@ -1,4 +1,4 @@
-package earthquakes.geojson;
+package earthquakes.osm;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,14 +6,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
-import earthquakes.geojson.Feature2;
+import com.fasterxml.jackson.core.type.TypeReference;
 
-
-public class FeatureCollection2 {
+public class Place {
+  public long place_id;
+  public double lat;
+  public double lon;
+  public String display_name;
   public String type;
-  private static Logger logger = LoggerFactory.getLogger(FeatureCollection2.class);
-  
-  // public List<Feature2> features2;
+  private static Logger logger = LoggerFactory.getLogger(Place.class);
+
 
   /**
      * Create a FeatureCollection object from json representation
@@ -23,15 +25,16 @@ public class FeatureCollection2 {
      * @see <a href=
      *      "https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a>
      */
-    public static FeatureCollection2 fromJSON(String json) {
+
+    public static List<Place> listFromJSON(String json) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-            FeatureCollection2 featureCollection2 = objectMapper.readValue(json, FeatureCollection2.class);
-
-
-            return featureCollection2;
+            // FeatureCollection featureCollection = objectMapper.readValue(json, FeatureCollection.class);
+            // List<Place> place = objectMapper.readValue(json, objectMapper.getTypeFactory().constructCollectionType(List.class, Place.class));
+            List<Place> place = objectMapper.readValue(json, new TypeReference<List<Place>>(){});
+            return place;
         } catch (JsonProcessingException jpe) {
             logger.error("JsonProcessingException:" + jpe);
             return null;
@@ -40,5 +43,4 @@ public class FeatureCollection2 {
             return null;
         }
     }
-
 }
