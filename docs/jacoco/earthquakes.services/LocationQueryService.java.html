@@ -21,42 +21,41 @@ import org.springframework.web.client.HttpClientErrorException;
 
 <span class="nc" id="L22">public class LocationQueryService {</span>
 
-<span class="nc" id="L24">    private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);</span>
+<span class="nc" id="L24">    private Logger logger = LoggerFactory.getLogger(LocationQueryService.class);</span>
 
     public String getJSON(String location) {
-        // RestTemplate restTemplate = new RestTemplate();
+<span class="nc" id="L27">        RestTemplate restTemplate = new RestTemplate();</span>
 
-        // HttpHeaders headers = new HttpHeaders();
-        // headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        // headers.setContentType(MediaType.APPLICATION_JSON);
+<span class="nc" id="L29">        HttpHeaders headers = new HttpHeaders();</span>
+<span class="nc" id="L30">        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));</span>
+<span class="nc" id="L31">        headers.setContentType(MediaType.APPLICATION_JSON);</span>
       
-        // HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(&quot;body&quot;, headers);
+<span class="nc" id="L33">        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(&quot;body&quot;, headers);</span>
 
-        // String uri = &quot;https://earthquake.usgs.gov/fdsnws/event/1/query&quot;;
-        // double ucsbLat = 34.4140;
-        // double ucsbLong = -119.8489;
-        // String params = String.format(&quot;?format=geojson&amp;minmagnitude=%d&amp;maxradiuskm=%d&amp;latitude=%f&amp;longitude=%f&quot;,
-        //    minmag,distance,ucsbLat,ucsbLong);
+<span class="nc" id="L35">        String uri = &quot;https://nominatim.openstreetmap.org/search/&quot;;</span>
+        
+<span class="nc" id="L37">        String params = String.format(&quot;?format=json&quot;,</span>
+           location);
 
-        // String url = uri + params;
-        // logger.info(&quot;url=&quot; + url);
+<span class="nc" id="L40">        String url = uri + location + params;</span>
+<span class="nc" id="L41">        logger.info(&quot;url=&quot; + url);</span>
 
-        // String retVal=&quot;&quot;;
-        // try {   
-        //     ResponseEntity&lt;String&gt; re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        //      MediaType contentType = re.getHeaders().getContentType();
-        //     HttpStatus statusCode = re.getStatusCode();
-        //     retVal = re.getBody();
-        // } catch (HttpClientErrorException e) {
-        //     retVal = &quot;{\&quot;error\&quot;: \&quot;401: Unauthorized\&quot;}&quot;;
-        // }
-        // logger.info(&quot;from EarthquakeQueryService.getJSON: &quot; + retVal);
-        // return retVal;
+<span class="nc" id="L43">        String retVal=&quot;&quot;;</span>
+        try {   
+<span class="nc" id="L45">            ResponseEntity&lt;String&gt; re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);</span>
+<span class="nc" id="L46">             MediaType contentType = re.getHeaders().getContentType();</span>
+<span class="nc" id="L47">            HttpStatus statusCode = re.getStatusCode();</span>
+<span class="nc" id="L48">            retVal = re.getBody();</span>
+<span class="nc" id="L49">        } catch (HttpClientErrorException e) {</span>
+<span class="nc" id="L50">            retVal = &quot;{\&quot;error\&quot;: \&quot;401: Unauthorized\&quot;}&quot;;</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">        logger.info(&quot;from LocationQueryService.getJSON: &quot; + retVal);</span>
+<span class="nc" id="L53">        return retVal;</span>
 
-<span class="nc" id="L56">        String fakeJson = &quot;{ \&quot;key\&quot;: \&quot;value\&quot; }&quot;;</span>
-<span class="nc" id="L57">        String json = fakeJson;</span>
-<span class="nc" id="L58">        logger.info(&quot;json=&quot; + json);</span>
-<span class="nc" id="L59">        return json;</span>
+        // String fakeJson = &quot;{ \&quot;key\&quot;: \&quot;value\&quot; }&quot;;
+        // String json = fakeJson;
+        // logger.info(&quot;json=&quot; + json);
+        // return json;
 
     }
 
