@@ -6,12 +6,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
+import earthquakes.geojson.Feature2;
 
-public class FeatureCollection {
+
+public class FeatureCollection2 {
   public String type;
-  private static Logger logger = LoggerFactory.getLogger(FeatureCollection.class);
-  public Metadata metadata;
-  public List<Feature> features;
+  private static Logger logger = LoggerFactory.getLogger(FeatureCollection2.class);
+  
+  // public List<Feature2> features2;
 
   /**
      * Create a FeatureCollection object from json representation
@@ -21,14 +23,15 @@ public class FeatureCollection {
      * @see <a href=
      *      "https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a>
      */
-    public static FeatureCollection fromJSON(String json) {
+    public static FeatureCollection2 fromJSON(String json) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-            FeatureCollection featureCollection = objectMapper.readValue(json, FeatureCollection.class);
-            
-            return featureCollection;
+            FeatureCollection2 featureCollection2 = objectMapper.readValue(json, FeatureCollection2.class);
+
+
+            return featureCollection2;
         } catch (JsonProcessingException jpe) {
             logger.error("JsonProcessingException:" + jpe);
             return null;
@@ -37,4 +40,5 @@ public class FeatureCollection {
             return null;
         }
     }
+
 }
