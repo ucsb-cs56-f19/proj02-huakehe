@@ -1,14 +1,14 @@
 Link to the documentation: 
-https://ucsb-cs56-f19.github.io/proj01-huakehe/
+https://ucsb-cs56-f19.github.io/proj02-huakehe/
 
 Heroku app:
-https://cs56-f19-proj01-huakehe.herokuapp.com/
+https://cs56-f19-proj02-huakehe.herokuapp.com/
 
 Link to this repo:
-https://github.com/ucsb-cs56-f19/proj01-huakehe
+https://github.com/ucsb-cs56-f19/proj02-huakehe
 
 Travis CI page:
-https://travis-ci.org/ucsb-cs56-f19/proj01-huakehe
+https://travis-ci.org/ucsb-cs56-f19/proj02-huakehe
 
 
 A simple Spring Boot webapp using:
