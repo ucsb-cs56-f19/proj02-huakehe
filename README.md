@@ -1,5 +1,5 @@
-Link to the documentation: ?????
-https://ucsb-cs56-f19.github.io/lab07-huakehe/
+Link to the documentation: 
+https://ucsb-cs56-f19.github.io/proj01-huakehe/
 
 Heroku app:
 https://github.com/ucsb-cs56-f19/proj01-huakehe
