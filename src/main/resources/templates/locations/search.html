@@ -10,11 +10,11 @@
 
       <h1>Location Search</h1>
 
-      <form action="#" th:action="@{/locations/results}" th:object="${locsearch}" method="get">
+      <form action="#" th:action="@{/locations/results}" th:object="${locSearch}" method="get">
             <table>
                 <tr class="form-group">
                     <th><label for="location" class="col-form-label">Location</label></th>
-                    <td><input type="text" class="form-control" id="location" name="location" value=""></td>
+                    <td><input type="text" class="form-control" id="location" name="location" value></td>
                 </tr>
             </table>
 

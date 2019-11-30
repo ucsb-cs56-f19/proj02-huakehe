@@ -10,11 +10,36 @@
 
       <h1>Locations Search Results</h1>
 
-        <table>
+        <table class="table">
             <tr>
-                <th>location</th>
-                <td th:text="${LocSearch.location}"></td>
+                <th>Location</th>
             </tr>
+            <tr>
+                <td th:text="${locSearch.location}"></td>
+            </tr>
+        </table>
+
+      <h2>Location Search Results</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Place Id</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Display Name</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="f: ${place}"> 
+                    <td th:text="${f.place_id}"></td>
+                    <td th:text="${f.lat}"></td>
+                    <td th:text="${f.lon}"></td>
+                    <td th:text="${f.display_name}"></td>
+                    <td th:text="${f.type}"></td>
+                </tr>
+                
+            </tbody>
         </table>
 
       
