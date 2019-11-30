@@ -2,7 +2,7 @@ Link to the documentation:
 https://ucsb-cs56-f19.github.io/proj01-huakehe/
 
 Heroku app:
-https://github.com/ucsb-cs56-f19/proj01-huakehe
+https://cs56-f19-proj01-huakehe.herokuapp.com/
 
 Link to this repo:
 https://github.com/ucsb-cs56-f19/proj01-huakehe
