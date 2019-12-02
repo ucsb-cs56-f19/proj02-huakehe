@@ -17,10 +17,14 @@ import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 import earthquakes.services.LocationQueryService;
 import earthquakes.searches.LocSearch;
 import java.util.List;
+import earthquakes.repositories.LocationRepository;
+import earthquakes.entities.Location;
 
 
 @Controller
 public class LocationsController {
+
+    private LocationRepository locationRepository;
 
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
@@ -43,6 +47,13 @@ public class LocationsController {
         List<Place> place = Place.listFromJSON(json);
         model.addAttribute("place",place);
         return "locations/results";
+    }
+
+    @GetMapping("/locations")
+    public String index(Model model) {
+        Iterable<Location> locations= locationRepository.findAll();
+        model.addAttribute("locations", locations);
+        return "locations/index";
     }
 
 
