@@ -24,6 +24,7 @@ import earthquakes.entities.Location;
 @Controller
 public class LocationsController {
 
+    @Autowired
     private LocationRepository locationRepository;
 
     @Autowired
