@@ -17,10 +17,18 @@ import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 import earthquakes.services.LocationQueryService;
 import earthquakes.searches.LocSearch;
 import java.util.List;
+import earthquakes.repositories.LocationRepository;
+import earthquakes.entities.Location;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-<span class="nc" id="L23">public class LocationsController {</span>
+<span class="nc" id="L28">public class LocationsController {</span>
+
+    @Autowired
+    private LocationRepository locationRepository;
 
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
@@ -29,22 +37,45 @@ import java.util.List;
     @GetMapping(&quot;/locations/search&quot;)
     public String getLocationsSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
-<span class="nc" id="L32">        return &quot;locations/search&quot;;</span>
+<span class="nc" id="L40">        return &quot;locations/search&quot;;</span>
     }
 
     @GetMapping(&quot;/locations/results&quot;)
     public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
-<span class="nc" id="L38">        LocationQueryService e = new LocationQueryService();</span>
-<span class="nc" id="L39">        model.addAttribute(&quot;locSearch&quot;, locSearch);</span>
+<span class="nc" id="L46">        LocationQueryService e = new LocationQueryService();</span>
+<span class="nc" id="L47">        model.addAttribute(&quot;locSearch&quot;, locSearch);</span>
         // TODO: Actually do the search here and add results to the model
-<span class="nc" id="L41">        String json = e.getJSON(locSearch.getLocation());</span>
-<span class="nc" id="L42">        model.addAttribute(&quot;json&quot;, json);</span>
-<span class="nc" id="L43">        List&lt;Place&gt; place = Place.listFromJSON(json);</span>
-<span class="nc" id="L44">        model.addAttribute(&quot;place&quot;,place);</span>
-<span class="nc" id="L45">        return &quot;locations/results&quot;;</span>
+<span class="nc" id="L49">        String json = e.getJSON(locSearch.getLocation());</span>
+<span class="nc" id="L50">        model.addAttribute(&quot;json&quot;, json);</span>
+<span class="nc" id="L51">        List&lt;Place&gt; place = Place.listFromJSON(json);</span>
+<span class="nc" id="L52">        model.addAttribute(&quot;place&quot;,place);</span>
+<span class="nc" id="L53">        return &quot;locations/results&quot;;</span>
     }
 
+    @GetMapping(&quot;/locations&quot;)
+    public String index(Model model) {
+<span class="nc" id="L58">        Iterable&lt;Location&gt; locations= locationRepository.findAll();</span>
+<span class="nc" id="L59">        model.addAttribute(&quot;locations&quot;, locations);</span>
+<span class="nc" id="L60">        return &quot;locations/index&quot;;</span>
+    }
+
+
+    @PostMapping(&quot;/locations/add&quot;)
+    public String add(Location location, Model model) {
+<span class="nc" id="L66">      locationRepository.save(location);</span>
+<span class="nc" id="L67">      model.addAttribute(&quot;locations&quot;, locationRepository.findAll());</span>
+<span class="nc" id="L68">      return &quot;locations/index&quot;;</span>
+    }
+
+    @DeleteMapping(&quot;/locations/delete/{id}&quot;)
+    public String delete(@PathVariable(&quot;id&quot;) long id, Model model) {
+<span class="nc" id="L73">        Location location = locationRepository.findById(id)</span>
+<span class="nc" id="L74">            .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid courseoffering Id:&quot; + id));</span>
+<span class="nc" id="L75">        locationRepository.delete(location);</span>
+<span class="nc" id="L76">        model.addAttribute(&quot;locations&quot;, locationRepository.findAll());</span>
+<span class="nc" id="L77">        return &quot;locations/index&quot;;</span>
+}
 
 
 }
