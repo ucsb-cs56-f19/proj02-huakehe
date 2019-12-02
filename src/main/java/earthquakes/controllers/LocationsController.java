@@ -21,7 +21,8 @@ import earthquakes.repositories.LocationRepository;
 import earthquakes.entities.Location;
 
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class LocationsController {
@@ -66,6 +67,15 @@ public class LocationsController {
       model.addAttribute("locations", locationRepository.findAll());
       return "locations/index";
     }
+
+    @DeleteMapping("/locations/delete/{id}")
+    public String delete(@PathVariable("id") long id, Model model) {
+        Location location = locationRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid courseoffering Id:" + id));
+        locationRepository.delete(location);
+        model.addAttribute("locations", locationRepository.findAll());
+        return "locations/index";
+}
 
 
 }
