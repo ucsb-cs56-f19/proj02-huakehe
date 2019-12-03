@@ -17,6 +17,8 @@ public class Location {
     private double latitude;
     private double longitude;
 
+    private String uid;
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
    
@@ -31,4 +33,7 @@ public class Location {
 
     public double getLongitude() { return longitude; }
     public void setLongitude (double longitude) { this.longitude = longitude; }
+
+    public String getUid() { return uid; }
+    public void setUid(String uid) { this.uid = uid; }
 }
